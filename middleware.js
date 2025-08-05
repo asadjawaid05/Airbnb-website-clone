@@ -1,7 +1,7 @@
 const Listing = require("./models/listing");
 const ExpressError = require("./utils/ExpressError.js"); // Custom error handler
 const { listingSchema, reviewSchema } = require("./schema.js"); // Import Joi validation schemas
-const Review = require("../MAJOR-PROJECT/models/review.js");
+const Review = require("./models/review"); // ✅ assuming models/ is in the same directory as middleware.js
 
 
 // Middleware function to validate listing data before processing
