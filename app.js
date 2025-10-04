@@ -24,7 +24,7 @@ const { error } = require('console');
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wonderlust";
 
-const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = process.env.MONGO_URI;
 
 main()
   .then(() => {
@@ -38,17 +38,8 @@ async function main() {
   await mongoose.connect(dbUrl, { 
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
-    // ssl: true // Uncomment if using Atlas with SSL
   });
 }
-
-// async function main() {
-//   await mongoose.connect(dbUrl), {
-//    useNewUrlParser: true,
-//    useUnifiedTopology: true,
-//    ssl: true
-//   }
-// }
 
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -81,10 +72,6 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
-
-// app.get("/", (req, res) => {
-//   res.send("Hi, I am root");
-// });
 
 app.use(session(sessionOptions));
 app.use(flash());
